@@ -1,0 +1,61 @@
+
+let atletas = [
+ {
+   nome: "Cesar Abascal",
+   notas: [10, 9.34, 8.42, 10, 7.88]
+ },
+ {
+   nome: "Fernando Puntel",
+   notas:  [8, 10, 10, 7, 9.33]
+ },
+ {
+   nome: "Daiane Jelinsky",
+   notas: [7, 10, 9.5, 9.5, 8]
+ },
+ {
+   nome: "Bruno Castro",
+   notas: [10, 10, 10, 9, 9.5]
+ }
+];
+
+class notasAtletas{
+    constructor(atletas){
+        this.atletas=atletas;
+    }
+    
+    calcularMedias() {
+
+        for (let i = 0; i < this.atletas.length; i++) {
+
+            let nomeAtleta = this.atletas[i].nome;
+           // console.log(nomeAtleta)
+            let notas = this.atletas[i].notas;
+            //console.log(notas);
+        
+            // Ordena as notas
+            notas.sort(function(a, b) {
+                return a - b;
+            });
+
+            // Elimina a menor (posição 0) e a maior (posição 4)
+            var notasComputadas = notas.slice(1, 4);
+
+            // Soma das 3 notas do meio
+            let soma = 0;
+            for (let j = 0; j < notasComputadas.length; j++) {
+                soma += notasComputadas[j];
+            }
+
+            // Média
+            let media = soma / notasComputadas.length;
+
+            // Apresentação
+            console.log("Atleta: " + nomeAtleta);
+            console.log("Notas Obtidas: " + notas.join(", "));
+            console.log("Média Válida: " + media);
+            console.log(""); // linha em branco
+        }
+    }
+}
+let notas = new notasAtletas(atletas);
+notas.calcularMedias();
